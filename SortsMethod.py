@@ -6,9 +6,20 @@ def InsertionSort(arr):
     elapsed_time = 0
     start_time = time.time()
     
+    n = len(arr)
+    for i in range(1, n):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+    sorted_arr = arr
+    
     end_time = time.time()
     elapsed_time = end_time - start_time
-    print("Tiempo de ejecución: ", elapsed_time, " segundos")
+    
+    return {"sorted_array":sorted_arr, "elapsed_time": elapsed_time}
 
 def HeapSort(arr):
     print("HeapSort")
@@ -18,7 +29,7 @@ def HeapSort(arr):
     
     end_time = time.time()
     elapsed_time = end_time - start_time
-    print("Tiempo de ejecución: ", elapsed_time, " segundos")
+    
     
 def QuickSort(arr):
     print("QuickSort")
@@ -34,8 +45,8 @@ def QuickSort(arr):
     sorted_arr = QuickSort(left) + middle + QuickSort(right)
     end_time = time.time()
     elapsed_time = end_time - start_time
-    print("Tiempo de ejecución: ", elapsed_time, " segundos")
-    return sorted_arr
+    
+    return {"sorted_array":sorted_arr, "elapsed_time": elapsed_time}
     
 def MergeSort(arr):
     print("MergeSort")
@@ -58,8 +69,8 @@ def MergeSort(arr):
     sorted_arr.extend(right_half[j:])
     end_time = time.time()
     elapsed_time = end_time - start_time
-    print("Tiempo de ejecución: ", elapsed_time, " segundos")
-    return sorted_arr
+    
+    return {"sorted_array":sorted_arr, "elapsed_time": elapsed_time}
     
 def SelectionSort(arr):
     print("SelectionSort")
@@ -74,8 +85,8 @@ def SelectionSort(arr):
         arr[i], arr[min] = arr[min], arr[i]
     end_time = time.time()
     elapsed_time = end_time - start_time
-    print("Tiempo de ejecución: ", elapsed_time, " segundos")
-    return arr
+    
+    return {"sorted_array":arr, "elapsed_time": elapsed_time}
 
 def BubbleSort(arr):
     print("BubbleSort")
@@ -88,8 +99,8 @@ def BubbleSort(arr):
                 arr[j], arr[j+1] = arr[j+1], arr[j]
     end_time = time.time()
     elapsed_time = end_time - start_time
-    print("Tiempo de ejecución: ", elapsed_time, " segundos")
-    return arr
+    
+    return {"sorted_array":arr, "elapsed_time": elapsed_time}
 
 def main():
     print("** Implementacion de Sorts **")
@@ -117,7 +128,8 @@ def main():
         arreglo = BubbleSort(arr)
 
     print("!! Arreglo ordenado !!")
-    print(arreglo)
+    print("Arreglo ordenado: ", arreglo["sorted_array"])
+    print("Tiempo de ejecución: ", arreglo["elapsed_time"], " segundos")
     
 if __name__ == "__main__":
     main()
