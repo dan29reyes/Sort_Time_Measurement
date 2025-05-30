@@ -57,7 +57,6 @@ def merge_sort_recursivo(arr):
     return sorted_arr
 
 def InsertionSort(arr):
-    print("InsertionSort")
     start_time = time.time()
     
     n = len(arr)
@@ -75,7 +74,6 @@ def InsertionSort(arr):
     return {"sorted_array": arr, "elapsed_time": elapsed_time}
 
 def HeapSort(arr):
-    print("HeapSort")
     start_time = time.time()
     n = len(arr)
 
@@ -99,7 +97,6 @@ def HeapSort(arr):
     return {"sorted_array": arr, "elapsed_time": elapsed_time}
     
 def QuickSort(arr):
-    print("QuickSort")
     start_time = time.time()
     
     sorted_arr = quick_sort_recursivo(arr)
@@ -110,7 +107,6 @@ def QuickSort(arr):
     return {"sorted_array": sorted_arr, "elapsed_time": elapsed_time}
     
 def MergeSort(arr):
-    print("MergeSort")
     start_time = time.time()
     
     sorted_arr = merge_sort_recursivo(arr)
@@ -121,7 +117,6 @@ def MergeSort(arr):
     return {"sorted_array": sorted_arr, "elapsed_time": elapsed_time}
     
 def SelectionSort(arr):
-    print("SelectionSort")
     start_time = time.time()
     n = len(arr)
     for i in range(n):
@@ -136,7 +131,6 @@ def SelectionSort(arr):
     return {"sorted_array": arr, "elapsed_time": elapsed_time}
 
 def BubbleSort(arr):
-    print("BubbleSort")
     start_time = time.time()
     n = len(arr)
     for i in range(n - 1):
@@ -155,7 +149,6 @@ def printData(result):
 
 def main():
     print("** Implementacion de Sorts **")
-    
     n = int(input("Ingrese el tamaño del arreglo: "))
     arr = [random.randint(1, 1000) for _ in range(n)]
     
@@ -167,6 +160,7 @@ def main():
         print("4. MergeSort")
         print("5. SelectionSort")
         print("6. BubbleSort")
+        print("7. Salir")
         opcion = int(input("Ingrese el método a utilizar: "))
    
         if opcion == 1:
@@ -187,8 +181,11 @@ def main():
         elif opcion == 6:
             result = BubbleSort(arr)
             printData(result)
+        elif opcion == 7:
+            print("Saliendo del programa.")
+            break
         else:
-            print("Opción no válida. Saliendo del programa.")
+            print("Opción no válida.")
 
 if __name__ == "__main__":
     main()
