@@ -148,60 +148,47 @@ def BubbleSort(arr):
     
     return {"sorted_array": arr, "elapsed_time": elapsed_time}
 
+def printData(result):
+    print("\n!! Arreglo ordenado !!")
+    print("Arreglo ordenado: ", result['sorted_array'])
+    print("Tiempo de ejecución: ",result['elapsed_time']," segundos")
+
 def main():
     print("** Implementacion de Sorts **")
     
-    while True:
-        try:
-            n = int(input("Ingrese el tamaño del arreglo: "))
-            if n >= 0:
-                break
-            else:
-                print("Por favor, ingrese un número no negativo.")
-        except ValueError:
-            print("Entrada inválida. Por favor, ingrese un número entero.")
-
+    n = int(input("Ingrese el tamaño del arreglo: "))
     arr = [random.randint(1, 1000) for _ in range(n)]
     
-    print("\n** Menus **")
-    print("1. InsertionSort")
-    print("2. HeapSort")
-    print("3. QuickSort")
-    print("4. MergeSort")
-    print("5. SelectionSort")
-    print("6. BubbleSort")
-
     while True:
-        try:
-            opcion = int(input("Ingrese el método a utilizar: "))
-            if 1 <= opcion <= 6:
-                break
-            else:
-                print("Opción inválida. Por favor, ingrese un número entre 1 y 6.")
-        except ValueError:
-            print("Entrada inválida. Por favor, ingrese un número entero.")
+        print("\n** Menus **")
+        print("1. InsertionSort")
+        print("2. HeapSort")
+        print("3. QuickSort")
+        print("4. MergeSort")
+        print("5. SelectionSort")
+        print("6. BubbleSort")
+        opcion = int(input("Ingrese el método a utilizar: "))
+   
+        if opcion == 1:
+            result = InsertionSort(arr)
+            printData(result)
+        elif opcion == 2:
+            result = HeapSort(arr)
+            printData(result)
+        elif opcion == 3:
+            result = QuickSort(arr)
+            printData(result)
+        elif opcion == 4: 
+            result = MergeSort(arr)
+            printData(result)
+        elif opcion == 5:
+            result = SelectionSort(arr)
+            printData(result)
+        elif opcion == 6:
+            result = BubbleSort(arr)
+            printData(result)
+        else:
+            print("Opción no válida. Saliendo del programa.")
 
-    array_to_sort = arr[:] 
-    
-    print(f"\nArreglo original (primeros 20 elementos): {arr[:20]}{'...' if len(arr) > 20 else ''}")
-
-    result = {}
-    if opcion == 1:
-        result = InsertionSort(array_to_sort)
-    elif opcion == 2:
-        result = HeapSort(array_to_sort)
-    elif opcion == 3:
-        result = QuickSort(array_to_sort)
-    elif opcion == 4: 
-        result = MergeSort(array_to_sort)
-    elif opcion == 5:
-        result = SelectionSort(array_to_sort)
-    elif opcion == 6:
-        result = BubbleSort(array_to_sort)
-    
-    print("\n!! Arreglo ordenado !!")
-    print(f"Arreglo ordenado (primeros 20 elementos): {result['sorted_array'][:20]}{'...' if len(result['sorted_array']) > 20 else ''}")
-    print(f"Tiempo de ejecución: {result['elapsed_time']:.6f} segundos")
-    
 if __name__ == "__main__":
     main()
